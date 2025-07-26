@@ -5,6 +5,7 @@ preview.innerHTML = recentIdeas.map(idea => `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloudExtel Ideathon 2025</title>
+    <title>Mission FY 2027 : 2Y = 2R = 3E</title>
     <style>
         * {
             margin: 0;
@@ -27,12 +28,12 @@ preview.innerHTML = recentIdeas.map(idea => `
         .header {
             text-align: center;
             color: #4A90E2;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             animation: fadeInDown 1s ease-out;
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(74, 144, 226, 0.5);
             color: #4A90E2;
@@ -47,7 +48,7 @@ preview.innerHTML = recentIdeas.map(idea => `
         .main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 25px;
             align-items: start;
         }
 
@@ -56,22 +57,22 @@ preview.innerHTML = recentIdeas.map(idea => `
             backdrop-filter: blur(10px);
             border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
             text-align: center;
             animation: fadeInDown 1.2s ease-out;
         }
 
         .wall-of-fame h2 {
             color: #4A90E2;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
 
         .wall-of-fame p {
             color: #6BB6FF;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-size: 1rem;
         }
 
         .winners-section {
@@ -84,12 +85,13 @@ preview.innerHTML = recentIdeas.map(idea => `
             background: rgba(255, 255, 255, 0.1);
             border: 2px dashed #4A90E2;
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            min-height: 180px;
+            min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             flex: 1;
             transition: all 0.3s ease;
         }
@@ -102,20 +104,27 @@ preview.innerHTML = recentIdeas.map(idea => `
         .winner-placeholder .position {
             color: #4A90E2;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .winner-placeholder .face-icon {
+            font-size: 2.5rem;
+            color: #4A90E2;
+            margin-bottom: 5px;
+            opacity: 0.7;
         }
 
         .winner-placeholder .prize {
             color: #6BB6FF;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .winner-placeholder .placeholder-text {
             color: #888;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-style: italic;
         }
 
@@ -124,7 +133,7 @@ preview.innerHTML = recentIdeas.map(idea => `
             backdrop-filter: blur(10px);
             border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
             animation: fadeInLeft 1s ease-out;
         }
@@ -134,13 +143,13 @@ preview.innerHTML = recentIdeas.map(idea => `
             backdrop-filter: blur(10px);
             border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
             animation: fadeInRight 1s ease-out;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         label {
@@ -153,10 +162,10 @@ preview.innerHTML = recentIdeas.map(idea => `
 
         input, textarea, select {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 2px solid rgba(74, 144, 226, 0.3);
-            border-radius: 12px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
@@ -176,16 +185,16 @@ preview.innerHTML = recentIdeas.map(idea => `
 
         textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 80px;
         }
 
         .submit-btn {
             background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
             color: white;
             border: none;
-            padding: 18px 40px;
+            padding: 15px 30px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -328,20 +337,24 @@ preview.innerHTML = recentIdeas.map(idea => `
             }
             
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .form-section, .admin-section {
-                padding: 25px;
+                padding: 20px;
             }
 
             .winners-section {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
             }
 
             .winner-placeholder {
-                min-height: 120px;
+                min-height: 100px;
+            }
+
+            .winner-placeholder .face-icon {
+                font-size: 2rem;
             }
         }
 
@@ -400,16 +413,19 @@ preview.innerHTML = recentIdeas.map(idea => `
             <div class="winners-section">
                 <div class="winner-placeholder">
                     <div class="position">First Prize</div>
+                    <div class="face-icon">👤</div>
                     <div class="placeholder-text">Your Photo Here</div>
                     <div class="prize">₹5,000</div>
                 </div>
                 <div class="winner-placeholder">
                     <div class="position">Second Prize</div>
+                    <div class="face-icon">👤</div>
                     <div class="placeholder-text">Your Photo Here</div>
                     <div class="prize">₹3,000</div>
                 </div>
                 <div class="winner-placeholder">
                     <div class="position">Third Prize</div>
+                    <div class="face-icon">👤</div>
                     <div class="placeholder-text">Your Photo Here</div>
                     <div class="prize">₹2,000</div>
                 </div>
@@ -418,7 +434,7 @@ preview.innerHTML = recentIdeas.map(idea => `
 
         <div class="main-content">
             <div class="form-section">
-                <h2 style="margin-bottom: 30px; color: #4A90E2; text-align: center;">Submit Your Idea</h2>
+                <h2 style="margin-bottom: 20px; color: #4A90E2; text-align: center;">Submit Your Idea</h2>
                 
                 <div class="success-message" id="successMessage">
                     🎉 Your idea has been submitted successfully! Thank you for participating.
