@@ -1,0 +1,686 @@
+preview.innerHTML = recentIdeas.map(idea => `
+                <div class="idea-<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudExtel Ideathon 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: #4A90E2;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(74, 144, 226, 0.5);
+            color: #4A90E2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #6BB6FF;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .wall-of-fame {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .wall-of-fame h2 {
+            color: #4A90E2;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .wall-of-fame p {
+            color: #6BB6FF;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .winners-section {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .winner-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed #4A90E2;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .winner-placeholder:hover {
+            background: rgba(74, 144, 226, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .winner-placeholder .position {
+            color: #4A90E2;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .winner-placeholder .prize {
+            color: #6BB6FF;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .winner-placeholder .placeholder-text {
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .admin-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4A90E2;
+            font-size: 0.95rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(74, 144, 226, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #aaa;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .admin-btn {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+        }
+
+        .stats {
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .stats h3 {
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+
+        .stats .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #6BB6FF;
+        }
+
+        .ideas-preview {
+            max-height: 300px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .idea-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #4A90E2;
+            box-shadow: 0 2px 5px rgba(74, 144, 226, 0.1);
+        }
+
+        .idea-card h4 {
+            color: #4A90E2;
+            margin-bottom: 5px;
+        }
+
+        .idea-card p {
+            color: #6BB6FF;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .idea-card .meta {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .success-message {
+            background: rgba(74, 144, 226, 0.2);
+            border: 1px solid #4A90E2;
+            color: #6BB6FF;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .password-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section, .admin-section {
+                padding: 25px;
+            }
+
+            .winners-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .winner-placeholder {
+                min-height: 120px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-elements::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(74, 144, 226, 0.1);
+            border-radius: 50%;
+            top: 10%;
+            left: 80%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(74, 144, 226, 0.05);
+            border-radius: 50%;
+            bottom: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>💡 CloudExtel Ideathon 2025</h1>
+            <p>Share Your Innovative Ideas & Shape the Future</p>
+        </div>
+
+        <div class="wall-of-fame">
+            <h2>🏆 Do you want to see your name on the Wall of Fame?</h2>
+            <p>Submit your best ideas and compete for amazing prizes!</p>
+            <div class="winners-section">
+                <div class="winner-placeholder">
+                    <div class="position">First Prize</div>
+                    <div class="placeholder-text">Your Photo Here</div>
+                    <div class="prize">₹5,000</div>
+                </div>
+                <div class="winner-placeholder">
+                    <div class="position">Second Prize</div>
+                    <div class="placeholder-text">Your Photo Here</div>
+                    <div class="prize">₹3,000</div>
+                </div>
+                <div class="winner-placeholder">
+                    <div class="position">Third Prize</div>
+                    <div class="placeholder-text">Your Photo Here</div>
+                    <div class="prize">₹2,000</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="form-section">
+                <h2 style="margin-bottom: 30px; color: #4A90E2; text-align: center;">Submit Your Idea</h2>
+                
+                <div class="success-message" id="successMessage">
+                    🎉 Your idea has been submitted successfully! Thank you for participating.
+                </div>
+
+                <form id="ideaForm">
+                    <div class="form-group">
+                        <label for="employeeName">Your Name *</label>
+                        <input type="text" id="employeeName" name="employeeName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employeeId">Employee ID *</label>
+                        <input type="text" id="employeeId" name="employeeId" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department *</label>
+                        <select id="department" name="department" required>
+                            <option value="">Select Department</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Product">Product</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="HR">Human Resources</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Operations">Operations</option>
+                            <option value="Support">Customer Support</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lineOfBusiness">Line of Business *</label>
+                        <select id="lineOfBusiness" name="lineOfBusiness" required>
+                            <option value="">Select Line of Business</option>
+                            <option value="Wireless">Wireless</option>
+                            <option value="Wireline">Wireline</option>
+                            <option value="Railways">Railways</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ideaTitle">Idea Title *</label>
+                        <input type="text" id="ideaTitle" name="ideaTitle" placeholder="Give your idea a catchy title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="areaOfImpact">Area of Impact *</label>
+                        <select id="areaOfImpact" name="areaOfImpact" required>
+                            <option value="">Select Area of Impact</option>
+                            <option value="Process Improvement">Process Improvement</option>
+                            <option value="Product Innovation">Product Innovation</option>
+                            <option value="Cost Reduction">Cost Reduction</option>
+                            <option value="Customer Experience">Customer Experience</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Sustainability">Sustainability</option>
+                            <option value="Workplace Culture">Workplace Culture</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ideaDescription">Idea Description *</label>
+                        <textarea id="ideaDescription" name="ideaDescription" placeholder="Describe your idea in detail. What problem does it solve? How would it work?" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expectedImpact">Expected Impact</label>
+                        <textarea id="expectedImpact" name="expectedImpact" placeholder="What positive impact do you expect this idea to have?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="implementation">Implementation Thoughts</label>
+                        <textarea id="implementation" name="implementation" placeholder="Any thoughts on how this could be implemented?"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn pulse">Submit My Idea</button>
+                </form>
+            </div>
+
+            <div class="admin-section">
+                <h2 style="margin-bottom: 30px; color: #4A90E2; text-align: center;">Admin Dashboard</h2>
+                
+                <div class="stats">
+                    <h3>Total Ideas Submitted</h3>
+                    <div class="number" id="totalIdeas">0</div>
+                </div>
+
+                <div class="password-section">
+                    <label for="adminPassword">Admin Password:</label>
+                    <input type="password" id="adminPassword" placeholder="Enter admin password">
+                    <button onclick="validateAdmin()" class="admin-btn" style="margin-top: 10px;">Access Admin Features</button>
+                </div>
+
+                <div id="adminFeatures" style="display: none;">
+                    <button onclick="downloadExcel()" class="admin-btn">📊 Download Excel Report</button>
+                    <button onclick="clearAllData()" class="admin-btn" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);">🗑️ Clear All Data</button>
+                    
+                    <div class="ideas-preview">
+                        <h4 style="margin-bottom: 15px; color: #4A90E2;">Recent Ideas Preview</h4>
+                        <div id="ideasPreview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        // Admin password
+        const ADMIN_PASSWORD = "cloudextel2025";
+        
+        // Data storage
+        let ideas = JSON.parse(localStorage.getItem('cloudextelIdeas') || '[]');
+        
+        // Update stats on load
+        updateStats();
+        updatePreview();
+
+        // Form submission
+        document.getElementById('ideaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const idea = {
+                id: Date.now(),
+                timestamp: new Date().toLocaleString(),
+                employeeName: formData.get('employeeName'),
+                employeeId: formData.get('employeeId'),
+                department: formData.get('department'),
+                lineOfBusiness: formData.get('lineOfBusiness'),
+                ideaTitle: formData.get('ideaTitle'),
+                areaOfImpact: formData.get('areaOfImpact'),
+                ideaDescription: formData.get('ideaDescription'),
+                expectedImpact: formData.get('expectedImpact') || 'Not specified',
+                implementation: formData.get('implementation') || 'Not specified'
+            };
+            
+            ideas.push(idea);
+            localStorage.setItem('cloudextelIdeas', JSON.stringify(ideas));
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            e.target.reset();
+            
+            // Update stats and preview
+            updateStats();
+            updatePreview();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        function updateStats() {
+            document.getElementById('totalIdeas').textContent = ideas.length;
+        }
+
+        function updatePreview() {
+            const preview = document.getElementById('ideasPreview');
+            const recentIdeas = ideas.slice(-5).reverse();
+            
+            if (recentIdeas.length === 0) {
+                preview.innerHTML = '<p style="text-align: center; color: #666;">No ideas submitted yet.</p>';
+                return;
+            }
+            
+            preview.innerHTML = recentIdeas.map(idea => `
+                <div class="idea-card">
+                    <h4>${idea.ideaTitle}</h4>
+                    <p><strong>Category:</strong> ${idea.ideaCategory}</p>
+                    <p>${idea.ideaDescription.substring(0, 100)}${idea.ideaDescription.length > 100 ? '...' : ''}</p>
+                    <div class="meta">
+                        <strong>${idea.employeeName}</strong> (${idea.department}) - ${idea.timestamp}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function validateAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminFeatures').style.display = 'block';
+                alert('Admin access granted!');
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+
+        function downloadExcel() {
+            if (ideas.length === 0) {
+                alert('No ideas to download.');
+                return;
+            }
+
+            // Prepare data for Excel
+            const excelData = ideas.map(idea => ({
+                'Submission ID': idea.id,
+                'Timestamp': idea.timestamp,
+                'Employee Name': idea.employeeName,
+                'Employee ID': idea.employeeId,
+                'Department': idea.department,
+                'Idea Title': idea.ideaTitle,
+                'Category': idea.ideaCategory,
+                'Description': idea.ideaDescription,
+                'Expected Impact': idea.expectedImpact,
+                'Implementation Thoughts': idea.implementation
+            }));
+
+            // Create workbook and worksheet
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(excelData);
+            
+            // Add some styling
+            ws['!cols'] = [
+                {wch: 15}, // Submission ID
+                {wch: 20}, // Timestamp
+                {wch: 20}, // Employee Name
+                {wch: 15}, // Employee ID
+                {wch: 15}, // Department
+                {wch: 30}, // Idea Title
+                {wch: 20}, // Category
+                {wch: 50}, // Description
+                {wch: 40}, // Expected Impact
+                {wch: 40}  // Implementation
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, 'Ideathon Submissions');
+            
+            // Generate filename with timestamp
+            const timestamp = new Date().toISOString().split('T')[0];
+            const filename = `CloudExtel_Ideathon_${timestamp}.xlsx`;
+            
+            // Download file
+            XLSX.writeFile(wb, filename);
+        }
+
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all submitted ideas? This action cannot be undone.')) {
+                if (confirm('This will permanently delete all ' + ideas.length + ' ideas. Are you absolutely sure?')) {
+                    ideas = [];
+                    localStorage.removeItem('cloudextelIdeas');
+                    updateStats();
+                    updatePreview();
+                    alert('All data has been cleared.');
+                }
+            }
+        }
+
+        // Add some interactive effects
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
